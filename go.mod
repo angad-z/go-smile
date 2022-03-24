@@ -1,4 +1,4 @@
-module github.com/zencoder/go-smile
+module github.com/gocollection/go-smile
 
 go 1.14
 
