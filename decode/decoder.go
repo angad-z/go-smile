@@ -82,7 +82,7 @@ func (d *Decoder) parseBinaryLongTextStructureValues(smileBytes []byte) ([]byte,
 				return smileBytes, object, err
 			}
 
-			object[key.(string)] = value
+			object[key.(string)] = toJsonCompliant(value)
 		}
 		return smileBytes[1:], object, nil
 	case LONG_VARIABLE_ASCII:
@@ -110,4 +110,15 @@ func (d *Decoder) parseBinaryLongTextStructureValues(smileBytes []byte) ([]byte,
 	}
 
 	return nil, nil, fmt.Errorf("unknown byte '%X' in parseBinaryLongTextStructureValues\n", nextByte)
+}
+
+func toJsonCompliant(val interface{}) interface{} {
+	switch val.(type) {
+	case int:
+		return float64(val.(int))
+	case float32:
+		return float64(val.(float32))
+	default:
+		return val
+	}
 }
