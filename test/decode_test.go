@@ -1,12 +1,12 @@
 package test
 
 import (
+	"github.com/gocollection/go-smile/smile"
+	"github.com/gocollection/go-smile/test/testdata"
 	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/zencoder/go-smile/smile"
-	"github.com/zencoder/go-smile/test/testdata"
 )
 
 func TestDecode(t *testing.T) {
