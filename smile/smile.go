@@ -27,6 +27,10 @@ func DecodeToObject(smile []byte) (interface{}, error) {
 		return "", err
 	}
 
+	if _, err := domain.DecodeHeader(smile[header.SizeBytes:]); err == nil {
+		smile = smile[header.SizeBytes:]
+	}
+
 	var d decode.Decoder
 	_, b, err := d.DecodeBytes(smile[header.SizeBytes:])
 	return b, err

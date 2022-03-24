@@ -1,0 +1,17 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":0,
+    "params":{
+      "q":"*:*",
+      "fl":"score, id",
+      "wt":"smile"
+    }},
+  "response":{"numFound":2,"start":0,"maxScore":1.0,"numFoundExact":true,"docs":[
+    {
+      "id":"1",
+      "score":1.0},
+    {
+      "id":"2",
+      "score":1.0}]
+  }}
