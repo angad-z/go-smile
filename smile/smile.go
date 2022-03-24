@@ -2,9 +2,8 @@ package smile
 
 import (
 	"encoding/json"
-
-	"github.com/zencoder/go-smile/decode"
-	"github.com/zencoder/go-smile/domain"
+	"github.com/gocollection/go-smile/decode"
+	"github.com/gocollection/go-smile/domain"
 )
 
 func DecodeToJSON(smile []byte) (string, error) {
