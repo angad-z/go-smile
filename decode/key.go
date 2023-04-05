@@ -42,7 +42,7 @@ func (d *Decoder) parseKey(smileBytes []byte) ([]byte, interface{}, error) {
 		return d.readLongSharedKey(smileBytes)
 	}
 	if nextByte == 0x34 {
-		return readVariableLengthText(smileBytes[1:])
+		return readVariableLengthText(smileBytes)
 	}
 	if nextByte >= 0x40 && nextByte <= 0x7F {
 		return d.readShortSharedKey(smileBytes)
