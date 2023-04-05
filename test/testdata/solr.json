@@ -1,0 +1,53 @@
+{
+  "responseHeader": {
+    "zkConnected": true,
+    "status": 0,
+    "QTime": 1,
+    "params": {
+      "identifier": "hp_delivery",
+      "indent": "false",
+      "fl": [
+        "",
+        "id"
+      ],
+      "start": "0",
+      "fq": [
+        "doc_type:restaurant",
+        " status_id:(1 13)  opening_soon_flag:false  temp_closed_flag:false  has_online_order_flag:1",
+        " ((delivery_timings1_1_start:[* TO 1130] AND delivery_timings1_1_end:{1130 TO *]) OR (delivery_timings1_2_start:[* TO 1130] AND delivery_timings1_2_end:{1130 TO *]) OR (delivery_timings1_3_start:[* TO 1130] AND delivery_timings1_3_end:{1130 TO *]))",
+        "{!geofilt filter=true sfield=latlon_location_rpt pt=28.435832188636066,77.10105159146579 d=7} OR (is_xl_delivery_res:true AND {!geofilt filter=true sfield=latlon_location_rpt pt=28.435832188636066,77.10105159146579 d=12})"
+      ],
+      "sort": "score desc",
+      "rows": "1",
+      "facet.query": "{!parent which='doc_type:restaurant'}(dish_id:142111)",
+      "facet.limit": "1000",
+      "q": "({!parent which='doc_type:restaurant'})",
+      "shards": "shard1",
+      "shards.tolerant": "true",
+      "facet.mincount": "0",
+      "timeAllowed": "1000",
+      "shards.preference": "replica.location:local",
+      "facet": "true",
+      "wt": "smile"
+    }
+  },
+  "response": {
+    "numFound": 3625,
+    "start": 0,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "res_19142645"
+      }
+    ]
+  },
+  "facet_counts": {
+    "facet_queries": {
+      "{!parent which='doc_type:restaurant'}(dish_id:142111)": 20
+    },
+    "facet_fields": {},
+    "facet_ranges": {},
+    "facet_intervals": {},
+    "facet_heatmaps": {}
+  }
+}

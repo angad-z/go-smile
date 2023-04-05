@@ -42,13 +42,20 @@ func (d *Decoder) parseKey(smileBytes []byte) ([]byte, interface{}, error) {
 		return d.readLongSharedKey(smileBytes)
 	}
 	if nextByte == 0x34 {
-		return readVariableLengthText(smileBytes[1:])
+		return readVariableLengthText(smileBytes)
 	}
 	if nextByte >= 0x40 && nextByte <= 0x7F {
 		return d.readShortSharedKey(smileBytes)
 	}
-	if nextByte >= 0x80 && nextByte <= 0xBF {
+	if nextByte >= 0x80 && nextByte <= 0x9F {
 		smileBytes, keyName, err := readTinyAscii(smileBytes)
+		if err == nil {
+			d.sharedState.AddSharedKey(keyName)
+		}
+		return smileBytes, keyName, err
+	}
+	if nextByte >= 0xA0 && nextByte <= 0xBF {
+		smileBytes, keyName, err := readShortAscii(smileBytes)
 		if err == nil {
 			d.sharedState.AddSharedKey(keyName)
 		}
