@@ -1,10 +1,7 @@
 package smile
 
 import (
-	"encoding/base64"
 	"encoding/json"
-
-	"log"
 
 	"github.com/gocollection/go-smile/decode"
 	"github.com/gocollection/go-smile/domain"
@@ -27,10 +24,6 @@ func DecodeToJSON(smile []byte) (string, error) {
 func DecodeToObject(smile []byte) (interface{}, error) {
 	header, err := domain.DecodeHeader(smile)
 	if err != nil {
-		log.Printf(
-			"[go-smile] error decoding bytes. err: %s; base64-string: %s",
-			err.Error(), base64.StdEncoding.EncodeToString(smile),
-		)
 		return "", err
 	}
 
