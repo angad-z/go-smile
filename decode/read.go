@@ -112,7 +112,13 @@ func zigzagDecode(varInt int) int {
 }
 
 func readTinyAscii(smileBytes []byte) ([]byte, interface{}, error) {
+	if len(smileBytes) < 2 {
+		return nil, nil, fmt.Errorf("error reading tiny ascii string: less than 2 bytes")
+	}
 	var length = int(smileBytes[0]&0x1F) + 1
+	if len(smileBytes) < length+1 {
+		return nil, nil, fmt.Errorf("error reading tiny ascii string: not enough bytes")
+	}
 	var s = string(smileBytes[1 : length+1])
 
 	return smileBytes[length+1:], s, nil
